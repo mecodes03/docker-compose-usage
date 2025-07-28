@@ -2,21 +2,19 @@
 
 ## Step1 - Write Dockerfile
 
-## Step2 - Create a Network
-
 ```bash
 docker network create my-network
 ```
 
-## Step3 - build the Dockerfile
+## Step2 - build the Dockerfile
 
 ```bash
-docker build -t my-app .
+docker build -t my-app . # here no need for any network
 ```
 
-#### NO NEED FOR ANY NETWORK
+##### important note:- build shouldn't depend on databse
 
-### important note:- build shouldn't depend on other services
+## Step2 - Create a Network
 
 ## Step4 - spin up a postgres database
 
@@ -31,3 +29,5 @@ docker run --network my-network -e DATABASE_URL=postgresql://postgres:password@p
 ```
 
 ### here we're using HOST as pg-db since both containers are on same network (my-network)
+
+## we can save ourselves from all this trouble by just using docker-compose
